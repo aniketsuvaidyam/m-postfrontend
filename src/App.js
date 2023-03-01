@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './Components/Auth/Login/Login';
+import Router from './Components/Router/Router';
 
 function App() {
   return (
-    <div className="bg-red-600 p-4">
-     
+    <div>
+      <Router/>
     </div>
   );
 }
