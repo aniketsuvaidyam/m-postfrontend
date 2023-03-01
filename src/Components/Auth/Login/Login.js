@@ -4,7 +4,7 @@ import Logo from "../../../Assets/Vector.png";
 import google from "../../../Assets/google.png";
 import github from "../../../Assets/github.png";
 import SOS from "../../../Assets/SOS.png";
-import { Link , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 
@@ -15,35 +15,38 @@ const Login = () => {
   const [password, setPassword] = useState("");
   // checkbox is for agree terms and condition and activating Login button
   const [check, setCheck] = useState(true);
+  //  open and set open is for viewing entered password by user
   const [open, setOpen] = useState(false);
+  // use navigate is used for navigation form tegistered to nextStep
   const navigate = useNavigate();
 
-  // Api for Login 
-  const login = ()=>{
+  // Api for Login
+  const login = () => {
+    // axios is because http server need token
     axios
-    .post(`${process.env.REACT_APP_BASEURL}/auth/login`, {
-      email: email,
-      password: password,
-    })
+      .post(`${process.env.REACT_APP_BASEURL}/auth/login`, {
+        email: email,
+        password: password,
+      })
       .then((res) => {
         sessionStorage.setItem("token", res.data.token);
         if (res.data.token) {
           setTimeout(() => {
             navigate("/workSpace/collection");
-            // setError(false)
           }, 2000);
+          // here toke is get from response
           let token = res.data.token;
+          // the important data of user is extracted hear from token
           let payload = token.split(".");
           let data = atob(payload[1]);
+          // data of user saved to session storage
           sessionStorage.setItem("paylode", data);
-        } else {
-          console.log("unauthorized");
         }
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+  };
   return (
     <>
       <div className="w-full h-screen ">
@@ -122,10 +125,12 @@ const Login = () => {
               <div className="w-full flex justify-end">
                 <button
                   disabled={check}
-                  className={`${check === false ? "bg-blue" : "bg-blue opacity-20"}
+                  className={`${
+                    check === false ? "bg-blue" : "bg-blue opacity-20"
+                  }
                   py-2 text-white text-sm px-10 rounded-sm`}
                   onClick={login}
-                  >
+                >
                   LOGIN
                 </button>
               </div>
