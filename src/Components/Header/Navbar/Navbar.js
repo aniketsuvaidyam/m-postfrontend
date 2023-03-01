@@ -1,14 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiFillCaretDown } from "react-icons/ai";
-// import WorkSpaceDropDwon from "../WorkSpaceDropDwon/WorkSpaceDropDown";
-import { useContext } from "react";
-import { DataContext } from "../../Context/DataProvider";
+import WorkSpaceDropDown from "../WorkSpaceDropDown/WorkSpaceDropDown";
 
-const Navbar = ({setTab,tab}) => {
-  const {workSpaceopen, setworkSpaceopen}=useContext(DataContext)
-  // const [open, setopen] = useState(false);
-
+const Navbar = ({ setTab, tab }) => {
+  const [workSpaceopen, setworkSpaceopen] = useState(false);
   // let menuRef = useRef();
   // useEffect(() => {
   //   let handler = (e) => {
@@ -23,21 +19,21 @@ const Navbar = ({setTab,tab}) => {
   // });
   return (
     <>
-      <div className="flex gap-8 relative " 
+      <div className="flex gap-8 relative "
       // ref={menuRef}
       >
         <Link
           to="/workSpace/collection"
           className="flex items-center gap-2"
-         
+
         >
-          <p onClick={()=>setTab('workspace')} className={`cursor-pointer ${tab==='workspace' && 'text-blue-600'}`}>Workspace</p> 
-          <AiFillCaretDown className="text-xs"  onClick={() => {  setworkSpaceopen(!workSpaceopen)}}/>
+          <p onClick={() => setTab('workspace')} className={`cursor-pointer ${tab === 'workspace' && 'text-blue'}`}>Workspace</p>
+          <AiFillCaretDown className="text-xs" onClick={() => { setworkSpaceopen(!workSpaceopen) }} />
         </Link>
-        <p onClick={()=>setTab('reports')} className={`cursor-pointer ${tab==='reports' && 'text-blue-600'}`}>Reports</p>
-        <p onClick={()=>setTab('explore')} className={`cursor-pointer ${tab==='explore' && 'text-blue-600'}`}>Explore</p>
+        <p onClick={() => setTab('reports')} className={`cursor-pointer ${tab === 'reports' && 'text-blue'}`}>Reports</p>
+        <p onClick={() => setTab('explore')} className={`cursor-pointer ${tab === 'explore' && 'text-blue'}`}>Explore</p>
         {/* workSpace */}
-        {/* {workSpaceopen && <WorkSpaceDropDwon />} */}
+        {workSpaceopen && <WorkSpaceDropDown {...{ setworkSpaceopen, workSpaceopen }} />}
       </div>
     </>
   );

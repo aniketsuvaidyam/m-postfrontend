@@ -4,18 +4,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Protected from "./Protected";
 import WorkSpace from "../WorkSpace/WorkSpace";
 import Register from "../Auth/Register/Register";
-// import DataProvider from "../Context/DataProvider";
+import DataProvider from "../Context/DataProvider";
 // import CollectionBody from "../Home/LeftBody/CollectionBody/CollectionBody";
 // import ApiBody from "../Home/LeftBody/ApiBody/ApiBody";
 // import EnvironmentBody from "../Home/LeftBody/EnvironmentBody/EnvironmentBody";
 // import HistoryBody from "../Home/LeftBody/HistoryBody/HistoryBody";
-// import SnackBar from "../Home/Tabs/TabsBody/SnackBar";
+// import SnackBar from "../SnackBar/SnackBar";
 
 const Router = () => {
   return (
     <>
       <BrowserRouter>
-        {/* <DataProvider> */}
+        <DataProvider>
           <Routes>
             <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -28,7 +28,7 @@ const Router = () => {
             </Route> 
           </Routes>
           {/* <SnackBar /> */}
-        {/* </DataProvider> */}
+        </DataProvider>
       </BrowserRouter>
     </>
   );
