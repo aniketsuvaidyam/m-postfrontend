@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const ReqBody = () => {
   return (
     <>
-      <div className="w-full h-[40vh] bg-slate-400">
-        </div>  
+      <div className="w-full min-h-[100vh] bg-slate-400">
+        
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default ReqBody
+export default ReqBody;
