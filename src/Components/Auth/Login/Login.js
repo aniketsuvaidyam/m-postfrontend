@@ -4,12 +4,11 @@ import Logo from "../../../Assets/Vector.png";
 import google from "../../../Assets/google.png";
 import github from "../../../Assets/github.png";
 import SOS from "../../../Assets/SOS.png";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import axios from "axios";
 
 const Login = () => {
-  //   const [openForgetPopUp, setOpenForgetPopUp] = useState(false);
-  // const {setMsg,setError, setStatus }=useContext(DataContext);
   // email and setEmail is used for storing email information for login pourpose
   const [email, setEmail] = useState("");
   // password and setPassword is used for storing Possword information for login pourpose
@@ -17,6 +16,34 @@ const Login = () => {
   // checkbox is for agree terms and condition and activating Login button
   const [check, setCheck] = useState(true);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  // Api for Login 
+  const login = ()=>{
+    axios
+    .post(`${process.env.REACT_APP_BASEURL}/auth/login`, {
+      email: email,
+      password: password,
+    })
+      .then((res) => {
+        sessionStorage.setItem("token", res.data.token);
+        if (res.data.token) {
+          setTimeout(() => {
+            navigate("/workSpace/collection");
+            // setError(false)
+          }, 2000);
+          let token = res.data.token;
+          let payload = token.split(".");
+          let data = atob(payload[1]);
+          sessionStorage.setItem("paylode", data);
+        } else {
+          console.log("unauthorized");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <>
       <div className="w-full h-screen ">
@@ -95,9 +122,9 @@ const Login = () => {
               <div className="w-full flex justify-end">
                 <button
                   disabled={check}
-                  className={`${check === false ? "bg-blue" : "bg-blue"}
+                  className={`${check === false ? "bg-blue" : "bg-blue opacity-20"}
                   py-2 text-white text-sm px-10 rounded-sm`}
-                  // onClick={save}
+                  onClick={login}
                   >
                   LOGIN
                 </button>
