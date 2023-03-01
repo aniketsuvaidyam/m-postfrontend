@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import Avatar from '../../../Assets/avatar.png'
 import {TbUpload} from 'react-icons/tb'
 import {HiOutlineTrash} from 'react-icons/hi'
-// import { useDispatch, useSelector } from 'react-redux';
-// import { ProfileUrl } from '../../../Redux/Action/ProfileAction'
 import { Puff } from  'react-loader-spinner'
 import Http from '../../../Service/Http'
 import { DataContext } from '../../Context/DataProvider';
@@ -13,14 +11,10 @@ const Profile = ({setOpenProfile}) => {
     const [file, setfile] = useState(null)
     const {url, setUrl,setMsg,setError,setStatus} =useContext(DataContext)
     const [isLoading, setLoading] = useState(false);
-    // const dispatch = useDispatch()
-    // const items = useSelector((state) => state.ProfileReducer.url)
     const paylode=sessionStorage.getItem('paylode')
     const{_id} =JSON.parse(paylode) 
 
     const Upload=()=>{
-      // dispatch(ProfileUrl(url))
-      // setUrl(items)
         const body = new FormData()
     body.append('file', file)
 
@@ -117,8 +111,8 @@ const Profile = ({setOpenProfile}) => {
                 </div>
                 <div className="w-full flex justify-between px-3">
                    <button className='border px-8 py-1 rounded-md font-medium 
-                    hover:bg-blue-600 hover:text-white' onClick={Upload}>Save</button>
-                   <button className='border px-8 py-1 rounded-md font-medium hover:bg-blue-600 hover:text-white'
+                    hover:bg-blue hover:text-white' onClick={Upload}>Save</button>
+                   <button className='border px-8 py-1 rounded-md font-medium hover:bg-blue hover:text-white'
                     onClick={()=>setOpenProfile(false)}>Close</button>
                 </div>
             </div>

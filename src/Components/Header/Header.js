@@ -13,6 +13,7 @@ import Profile from './Profile/Profile'
 // import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion';
 import { DataContext } from '../Context/DataProvider'
+import Search from '../Search/Search';
 
 const Header = ({setTab,tab}) => {
   const {url , setMsg,setError } =useContext(DataContext)
@@ -22,17 +23,17 @@ const [Profileurl, setProfileUrl] = useState(null)
 
 
 
-// let token = sessionStorage.getItem('token')
-//     let headers = {
-//       token
-//     }
-// const paylode=sessionStorage.getItem('paylode')
-//     const{_id} =JSON.parse(paylode) 
+let token = sessionStorage.getItem('token')
+    let headers = {
+      token
+    }
+const paylode=sessionStorage.getItem('paylode')
+    const{_id} =JSON.parse(paylode) 
     
 const getImg =()=>{
-  axios.get(`http://localhost:4000/employee`,
+  axios.get(`http://localhost:4000/employee/${_id}`,
   {
-    // headers
+    headers
   }).then((res) => {
     setProfileUrl(res.data.user.url)
   }).catch((error) => {
@@ -86,7 +87,7 @@ return () => {
           </div>
           <div className="flex gap-5 items-center">
             {/* search */}
-            {/* <div className='cursor-pointer hidden lg:block'><SearchMenu/></div> */}
+            <div className='cursor-pointer hidden lg:block'><Search/></div>
            <div className="block lg:hidden">
            <div className='cursor-pointer flex items-center justify-center w-8 h-8 border rounded-full'>
               <BsSearch/>
@@ -111,7 +112,7 @@ return () => {
            hidden group-hover:block rounded-md z-50" >
             <p className='p-1.5'></p>
             <ul className='bg-white border rounded-md py-1'>
-            <li className='hover:bg-blue-400 border-b px-2 py-1.5 rounded-t-sm flex justify-between
+            <li className='hover:bg-blue border-b px-2 py-1.5 rounded-t-sm flex justify-between
             items-center hover:text-white font-medium text-sm' onClick={()=>setOpenProfile(!openProfile)}>Profile <CgProfile/></li>
             <li className=' hover:bg-red-500 px-2 py-1.5 rounded-b-sm flex 
             justify-between  items-center hover:text-white font-medium text-sm' onClick={signout}>Logout 
@@ -121,7 +122,7 @@ return () => {
            </div>
            {/* Share */}
            <motion.button whileTap={{ scale: 0.90 }}
-           className='bg-blue-600 text-white py-1 w-20 rounded-sm'>SHARE</motion.button>
+           className='bg-blue text-white py-1 w-20 rounded-sm'>SHARE</motion.button>
           </div>
         </div>
         {/* Profile */}
