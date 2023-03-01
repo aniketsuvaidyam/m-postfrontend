@@ -5,14 +5,30 @@ import google from "../../../Assets/google.png";
 import github from "../../../Assets/github.png";
 import SOS from "../../../Assets/SOS.png";
 import { Link } from "react-router-dom";
+import Http from "../../../Service/Http";
 // import RegisterForm from "./RegisterForm";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [gender , setGender] = useState("");
+  const [gender, setGender] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
+  //  User Register API
+  const Register = () => {
+    let newUserDeteils = { name, email, password, gender };
+    Http({
+      url: `${process.env.REACT_APP_BASEURL}/auth/Register`,
+      method: "post",
+      data: newUserDeteils,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className="w-full h-screen">
@@ -76,7 +92,9 @@ const Register = () => {
                   className="border-2 outline-none w-full py-1 px-2"
                   onChange={(e) => setGender(e.target.value)}
                 >
-                  <option value="" defaultValue>Choose Your Gender</option>
+                  <option value="" defaultValue>
+                    Choose Your Gender
+                  </option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
@@ -126,10 +144,10 @@ const Register = () => {
               <button
                 disabled={check}
                 className={`${
-                  check === false ? "bg-blue bg-opacity-20" : "bg-blue"
+                  check === false ? "bg-blue " : "bg-blue bg-opacity-20"
                 }
                 py-2 text-white text-sm px-10 rounded-sm`}
-                // onClick={save}
+                onClick={Register}
               >
                 SIGNUP
               </button>
