@@ -6,9 +6,9 @@ const Protected = (props) => {
     let login = sessionStorage.getItem('token');
 
     useEffect(() => {
-        if (!login) {
-            Navigate('/')
-        }
+        // if (!login) {
+        //     Navigate('/')
+        // }
     })
     return (
         <div>
