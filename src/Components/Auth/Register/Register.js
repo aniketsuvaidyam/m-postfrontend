@@ -8,15 +8,22 @@ import { Link } from "react-router-dom";
 import Http from "../../../Service/Http";
 // import RegisterForm from "./RegisterForm";
 const Register = () => {
+  // name store input data of user durring register time
   const [name, setName] = useState("");
+  // email store input data of user durring register time
   const [email, setEmail] = useState("");
+  //password store input data of user durring register time
   const [password, setPassword] = useState("");
+  // gender store input data of user durring register time
   const [gender, setGender] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  //  open and set open is for viewing entered password by user
   const [check, setCheck] = useState(true);
-  //  User Register API
+  //  New User Register API
   const Register = () => {
+    // newUserDeteils  is store all user details of new register user
     let newUserDeteils = { name, email, password, gender };
+    // Http is service used for calling api
     Http({
       url: `${process.env.REACT_APP_BASEURL}/auth/Register`,
       method: "post",
