@@ -6,6 +6,9 @@ import github from "../../../Assets/github.png";
 import SOS from "../../../Assets/SOS.png";
 import { Link } from "react-router-dom";
 import Http from "../../../Service/Http";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // import RegisterForm from "./RegisterForm";
 const Register = () => {
   // name store input data of user durring register time
@@ -30,10 +33,18 @@ const Register = () => {
       data: newUserDeteils,
     })
       .then((res) => {
-        console.log(res);
+        toast.success(res.data.message, {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 1000,
+          theme: "colored",
+        });
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 1000,
+          theme: "colored",
+        });
       });
   };
   return (
@@ -177,6 +188,7 @@ const Register = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );
