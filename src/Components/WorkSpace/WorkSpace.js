@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header/Header";
 import LeftSideUI from "./LeftSideUI/LeftSideUI";
 import Splitter, { SplitDirection } from "@devbookhq/splitter";
@@ -8,37 +8,43 @@ import NavBody from "./RightSideUI/NavBody/NavBody";
 import ResBody from "./RightSideUI/ApiBody/ResBody/ResBody";
 
 const WorkSpace = () => {
+  const [tab, setTab] = useState('workspace')
   return (
     <>
       <div className="w-full h-screen max-w-[1825px] mx-auto">
         {/* Header */}
-        <Header />
-        {/* LeftSideUI */}
-        <div className="w-full flex h-[90vh] ">
-          <Splitter direction={SplitDirection.Horizontal}>
-            <Splitter
-              direction={SplitDirection.Horizontal}
-              initialSizes={[27, 73]}
-            >
-              <LeftSideUI />
-              <Splitter
-                direction={SplitDirection.Vertical}
-                initialSizes={[50, 50]}
-              >
-                <div className="w-full">
-                  <Tabs />
-                  <ReqBody />
-                </div>
-                <Splitter direction={SplitDirection.Horizontal}>
-                  <ResBody />
+        <Header {...{ setTab, tab }} />
+        {tab === 'workspace' &&
+          <> {/* LeftSideUI */}
+            <div className="w-full flex h-[90vh] ">
+              <Splitter direction={SplitDirection.Horizontal}>
+                <Splitter
+                  direction={SplitDirection.Horizontal}
+                  initialSizes={[27, 73]}
+                >
+                  <LeftSideUI />
+                  <Splitter
+                    direction={SplitDirection.Vertical}
+                    initialSizes={[50, 50]}
+                  >
+                    <div className="w-full">
+                      <Tabs />
+                      <ReqBody />
+                    </div>
+                    <Splitter direction={SplitDirection.Horizontal}>
+                      <ResBody />
+                    </Splitter>
+                  </Splitter>
+                  <Splitter direction={SplitDirection.Horizontal}>
+                    <NavBody />
+                  </Splitter>
                 </Splitter>
               </Splitter>
-              <Splitter direction={SplitDirection.Horizontal}>
-                <NavBody />
-              </Splitter>
-            </Splitter>
-          </Splitter>
-        </div>
+            </div></>}
+        {/* ===========reports page render============ */}
+        {tab === 'reports' && <>reports</>}
+        {/* ===========reports page render============ */}
+        {tab === 'explore' && <>explore</>}
       </div>
     </>
   );

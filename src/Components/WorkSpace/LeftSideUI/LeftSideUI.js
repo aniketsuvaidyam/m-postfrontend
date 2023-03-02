@@ -24,8 +24,8 @@ const LeftSideUI = () => {
       <div className="w-full h-[90vh] ">
         {/* WorkSpace */}
         <div className="w-full h-[8%] flex items-center">
-          <div className="w-full h-10 flex justify-between items-center px-3 border-r">
-            <div className="text-sm font-medium">{workSpaceName ? <>
+          <div className="w-full h-10 flex justify-between items-center px-3 border-b">
+            <div className="text-sm font-medium truncate pr-2">{workSpaceName ? <>
 
               {workSpaceName}
             </> : <div className='pl-6'> <ThreeDots

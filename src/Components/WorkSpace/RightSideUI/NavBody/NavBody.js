@@ -65,11 +65,3 @@ const RightBar = () => {
 };
 
 export default RightBar;
-
-
-
-{/* <div className="min-w-[80px] h-[90vh] bg-orange-500">
-        <div className="w-12 min-w-[48px] bg-white h-full">
-          
-        </div>
-      </div> */}

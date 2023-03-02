@@ -15,6 +15,8 @@ const DataProvider = ({ children }) => {
   const [Msg, setMsg] = useState("");
   const [error, setError] = useState(false);
   const [status, setStatus] = useState('200');
+  const [tabsList, setTabsList] = useState([]);
+  const [currentActive, setCurrentActive] = useState('');
   // const [responseData, setResponseData] = useState([]);
   // const [changeAction, setchangeAction] = useState('');
   const [url, setUrl] = useState('');
@@ -45,6 +47,10 @@ const DataProvider = ({ children }) => {
           setError,
           status,
           setStatus,
+          tabsList,
+          setTabsList,
+          currentActive,
+          setCurrentActive,
           // responseData,
           // setResponseData,
           // SetEnviroment,
