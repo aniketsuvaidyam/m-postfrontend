@@ -47,6 +47,7 @@ const Tabs = () => {
     el.name = el.name;
     setTabsList([...tabsList, el]);
     setCurrentActive(el._id);
+    setReqData(el);
     setrecentTablength(recentTablength + 1);
     // tabs.push(el);
     // dispatch(Tabs(tabs));

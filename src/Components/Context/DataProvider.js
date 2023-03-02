@@ -9,7 +9,7 @@ const DataProvider = ({ children }) => {
   // const [paramsData, setParamsData] = useState([]);
   // const [headersData, setHeadersData] = useState([]);
   // const [enviroment, SetEnviroment] = useState([]);
-  // const [jsonText, setJsonText] = useState("");
+  const [jsonText, setJsonText] = useState("");
   const [collEdit, setCollEdit] = useState(false);
   const [colId, setcolId] = useState(null);
   const [Msg, setMsg] = useState("");
@@ -36,8 +36,8 @@ const DataProvider = ({ children }) => {
           // setParamsData,
           // headersData,
           // setHeadersData,
-          // jsonText,
-          // setJsonText,
+          jsonText,
+          setJsonText,
           collEdit,
           setCollEdit,
           colId,
