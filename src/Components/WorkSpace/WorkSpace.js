@@ -10,7 +10,7 @@ import { DataContext } from "../Context/DataProvider";
 
 const WorkSpace = () => {
   const [tab, setTab] = useState("workspace");
-  const { currentActive, tabsList } = useContext(DataContext)
+  const { currentActive, tabsList } = useContext(DataContext);
   return (
     <>
       <div className="w-full h-screen max-w-[1825px] mx-auto">
@@ -18,7 +18,6 @@ const WorkSpace = () => {
         <Header {...{ setTab, tab }} />
         {tab === "workspace" && (
           <>
-            {" "}
             {/* LeftSideUI */}
             <div className="w-full flex h-[90vh] ">
               <Splitter
@@ -30,24 +29,30 @@ const WorkSpace = () => {
                 <Splitter
                   direction={SplitDirection.Horizontal}
                   initialSizes={[95, 5]}
-                  minWidths={[700]}
                 >
-                  {tabsList.map(e => (
-                    e._id === currentActive &&
-                    <Splitter key={e._id}
-                      direction={SplitDirection.Vertical}
-                      initialSizes={[55, 45]}
-                    >
-                      <div>
-                        <Tabs />
-                        <ReqBody />
-                      </div>
+                  <Splitter
+                    direction={SplitDirection.Vertical}
+                    initialSizes={[8, 92]}
+                  >
+                    <Tabs />
 
-                      <Splitter direction={SplitDirection.Horizontal}>
-                        <ResBody />
-                      </Splitter>
-                    </Splitter>
-                  ))}
+                    {tabsList.map(
+                      (e) =>
+                        e._id === currentActive && (
+                          <Splitter
+                            key={e._id}
+                            direction={SplitDirection.Vertical}
+                            initialSizes={[55, 45]}
+                          >
+                            <div>
+                              <ReqBody />
+                            </div>
+                            <ResBody />
+                          </Splitter>
+                        )
+                    )}
+                  </Splitter>
+
                   <Splitter direction={SplitDirection.Horizontal}>
                     <div className="pt-0.5">
                       <NavBody />
