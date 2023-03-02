@@ -1,58 +1,34 @@
 import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
 import { MdOutlineCollectionsBookmark, MdHistory } from "react-icons/md";
 import { BiCodeBlock, BiCollapse } from "react-icons/bi";
 
-const LeftNav = () => {
+const LeftNav = ({ currentNav, setcurrentNav }) => {
   return (
     <>
       <div className="w-20 flex h-full">
         <div className=" w-full min-w-[80px] px-1 flex flex-col h-full border-r-[1.5px] gap-1 ">
-          <NavLink
-            to="collection"
-            className="w-full  flex flex-col items-center justify-center rounded  mt-1 py-3 text-xs gap-1"
-            style={({ isActive }) => ({
-              background: isActive ? "#e8eeff" : "",
-              color: isActive ? "#2B26FF" : "",
-            })}
-          >
+          <div className={`w-full  flex flex-col items-center justify-center rounded  mt-1 py-3 text-xs gap-1
+          cursor-pointer hover:bg-blue transition-all hover:text-white ${currentNav === 'Collection' && 'bg-blue text-white'}`} onClick={() => setcurrentNav('Collection')} >
             <MdOutlineCollectionsBookmark className="text-xl" />
             Collection
-          </NavLink>
-
-          <NavLink
-            to="api"
-            className="text-xs flex flex-col items-center  rounded  justify-center py-3 gap-1"
-            style={({ isActive }) => ({
-              background: isActive ? " #e8eeff  " : "",
-            })}
-          >
+          </div>
+          <div className={`w-full  flex flex-col items-center justify-center rounded  mt-1 py-3 text-xs gap-1
+          cursor-pointer hover:bg-blue transition-all hover:text-white ${currentNav === 'APIs' && 'bg-blue text-white'}`} onClick={() => setcurrentNav('APIs')} >
             <BiCollapse className="text-xl" />
             APIs
-          </NavLink>
-          <NavLink
-            to="environment"
-            className="text-xs flex flex-col items-center  rounded  justify-center py-3 gap-1"
-            style={({ isActive }) => ({
-              background: isActive ? " #e8eeff  " : "",
-            })}
-          >
+          </div>
+          <div className={`w-full  flex flex-col items-center justify-center rounded  mt-1 py-3 text-xs gap-1
+          cursor-pointer hover:bg-blue transition-all hover:text-white ${currentNav === 'Enviroment' && 'bg-blue text-white'}`} onClick={() => setcurrentNav('Enviroment')} >
             <BiCodeBlock className="text-xl" />
-            Environment
-          </NavLink>
-          <NavLink
-            to="history"
-            className="text-xs flex flex-col items-center  rounded  justify-center py-3 gap-1"
-            style={({ isActive }) => ({
-              background: isActive ? " #e8eeff  " : "",
-            })}
-          >
+            Enviroment
+          </div>
+          <div className={`w-full  flex flex-col items-center justify-center rounded  mt-1 py-3 text-xs gap-1
+          cursor-pointer hover:bg-blue transition-all hover:text-white ${currentNav === 'History' && 'bg-blue text-white'}`} onClick={() => setcurrentNav('History')}>
             <MdHistory className="text-xl" />
             History
-          </NavLink>
-        </div>
-        <div className="w-full">
-          <Outlet />
+          </div>
+
+
         </div>
       </div>
     </>

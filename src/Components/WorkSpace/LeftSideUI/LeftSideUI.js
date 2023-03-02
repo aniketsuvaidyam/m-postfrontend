@@ -11,6 +11,7 @@ import { DataContext } from "../../Context/DataProvider";
 const LeftSideUI = () => {
   const { workSpaceId } = useContext(DataContext)
   const [workSpaceName, setworkSpaceName] = useState('');
+  const [currentNav, setcurrentNav] = useState('Collection')
 
   let workSpace_Id = JSON.parse(localStorage.getItem('workSpace'));
   useEffect(() => {
@@ -54,8 +55,8 @@ const LeftSideUI = () => {
         </div>
         {/* LeftNav */}
         <div className="w-full flex h-[92%]">
-          <LeftNav />
-          <NavBody />
+          <LeftNav {...{ currentNav, setcurrentNav }} />
+          <NavBody {...{ currentNav }} />
         </div>
       </div>
     </>
