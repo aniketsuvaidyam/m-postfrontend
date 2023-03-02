@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AiOutlineSave } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
 import { DataContext } from "../../../../Context/DataProvider";
+import ReqTabs from "./ReqTabs/ReqTabs";
 
 const ReqBody = () => {
   const { reqData } = useContext(DataContext);
@@ -10,8 +11,8 @@ const ReqBody = () => {
   console.log(data)
   return (
     <>
-      <div className="w-full min-h-[100vh] bg-slate-400">
-        <div className="flex pt-2.5  items-center  px-3 relative ">
+      <div className="w-full min-h-[100vh] ">
+        <div className="flex items-center  p-3 relative ">
           {/* dropdown */}
           <div className="   w-28 h-9 border-gray-300 border  rounded-l-md bg-white  b  focus:outline-none">
             <select
@@ -85,6 +86,8 @@ const ReqBody = () => {
           </div>
           {/* {open === true ? <NewRequest setopen={setopen} details={data} /> : null} */}
         </div>
+        {/* tabs */}
+        <ReqTabs />
       </div>
     </>
   );
