@@ -32,7 +32,7 @@ const Login = () => {
         sessionStorage.setItem("token", res.data.token);
         if (res.data.token) {
           setTimeout(() => {
-            navigate("/workSpace/collection");
+            navigate("/workSpace");
           }, 2000);
           // here toke is get from response
           let token = res.data.token;
