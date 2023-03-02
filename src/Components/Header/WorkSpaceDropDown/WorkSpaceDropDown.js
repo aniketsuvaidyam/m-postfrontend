@@ -40,7 +40,7 @@ const WorkSpaceDropDown = ({ workSpaceopen, setworkSpaceopen }) => {
         <>
             <div
                 className="w-full h-40 min-h-[400px] bg-gray-50 drop-shadow-md absolute top-8 border 
-                   rounded-md pt-3 px-3 flex flex-col justify-between"
+                   rounded-md pt-3 px-3 flex flex-col justify-between z-10"
             >
                 <div className="w-full h-full flex flex-col gap-2">
                     {Loder === true ?
