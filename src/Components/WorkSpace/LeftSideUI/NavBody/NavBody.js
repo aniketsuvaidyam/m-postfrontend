@@ -7,7 +7,7 @@ import History from "./HistoryBody/History";
 const NavBody = ({ currentNav }) => {
   return (
     <>
-      <div className="w-full h-full -z-20 ">
+      <div className="w-full h-full ">
         {currentNav === "Collection" && <CollectionBody />}
         {currentNav === "APIs" && <APIsBody />}
         {currentNav === "Enviroment" && <EnviromentBody />}
