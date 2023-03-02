@@ -10,8 +10,8 @@ const DataProvider = ({ children }) => {
   // const [headersData, setHeadersData] = useState([]);
   // const [enviroment, SetEnviroment] = useState([]);
   // const [jsonText, setJsonText] = useState("");
-  // const [collEdit, setCollEdit] = useState(false);
-  // const [colId, setcolId] = useState(null);
+  const [collEdit, setCollEdit] = useState(false);
+  const [colId, setcolId] = useState(null);
   const [Msg, setMsg] = useState("");
   const [error, setError] = useState(false);
   const [status, setStatus] = useState('200');
@@ -37,10 +37,10 @@ const DataProvider = ({ children }) => {
           // setHeadersData,
           // jsonText,
           // setJsonText,
-          // collEdit,
-          // setCollEdit,
-          // colId,
-          // setcolId,
+          collEdit,
+          setCollEdit,
+          colId,
+          setcolId,
           setMsg,
           Msg,
           error,

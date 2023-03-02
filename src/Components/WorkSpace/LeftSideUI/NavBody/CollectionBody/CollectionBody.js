@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FcFolder } from "react-icons/fc";
 import { BiCaretRight, BiCaretDown, BiDotsHorizontalRounded, } from "react-icons/bi";
-// import MoreAction from "../MoreAction/MoreAction";
+import MoreAction from "../MoreAction/MoreAction";
 import BodyHead from "../BodyHead/BodyHead";
 import { DataContext } from "../../../../Context/DataProvider";
 import Http from "../../../../../Service/Http";
+import EditAction from "../MoreAction/EditAction";
 // import { CollectionLoader } from "../../../Loader/Loader";
-// import EditCollection from "../MoreAction/EditCollection";
 
 const CollectionBody = () => {
     const { setcolId, collEdit, setchangeAction, workSpaceId, setStatus, changeAction,
@@ -55,10 +55,10 @@ const CollectionBody = () => {
         setArr([...arr]);
     };
     const handleRequest = (e) => {
-        // if (tabsList.findIndex((f) => f._id === e._id) < 0) {
-        setTabsList([...tabsList, e]);
-        setCurrentActive(e._id);
-        // }
+        if (tabsList.findIndex((f) => f._id === e._id) < 0) {
+            setTabsList([...tabsList, e]);
+            setCurrentActive(e._id);
+        }
     };
     const getDetails = (details) => {
         let method = details?.method ? details?.method.toUpperCase() : "NA";
@@ -86,7 +86,7 @@ const CollectionBody = () => {
                 setMsg(res.data.message);
                 setStatus(res.status);
                 setError(true);
-                setchangeAction("E");
+                // setchangeAction("E");
             })
             .catch((err) => {
                 setMsg(err.response.data.message);
@@ -111,13 +111,13 @@ const CollectionBody = () => {
                                     <div className="flex items-center gap-2 text-gray-700" onClick={() => toggle(e)} >
                                         {e.toggle ? (<BiCaretDown className="cursor-pointer" />) :
                                             (<BiCaretRight className="cursor-pointer" />)}
-                                        <FcFolder className="text-xl" /> <p className="text-sm truncate">{e.name}</p>
+                                        <FcFolder className="text-xl" /> <p className="text-sm truncate" onClick={() => handleRequest(e)}>{e.name}</p>
                                     </div><p className="hidden group-hover:block absolute right-2"
                                         onClick={() => setcolId(e)} > <BiDotsHorizontalRounded
                                             className="cursor-pointer" onClick={() => open(e)} />
                                         {/* moreaction */}
                                     </p> {e.open ? (<div className="absolute z-50 right-3 top-9">
-                                        {/* <MoreAction {...{ collection: "collection" }} />{" "} */}
+                                        <MoreAction {...{ collection: "collection" }} />
                                     </div>) : null}
                                 </div>
                                 {/* request */}
@@ -149,8 +149,8 @@ const CollectionBody = () => {
                         </>
                         )}
                 </div>
-                {collEdit === true ? (''
-                    // <EditCollection {...{ apiUrl: "collection" }} />
+                {collEdit === true ? (
+                    <EditAction {...{ apiUrl: "collection" }} />
                 ) : null}
             </div>
         </>

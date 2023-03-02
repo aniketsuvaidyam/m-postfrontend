@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import { RxDotFilled } from "react-icons/rx";
+import { BiCollection } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineAntDesign } from "react-icons/ai";
 // import { useDispatch, useSelector } from "react-redux";
 // import { AddRequest } from "../../../../Redux/Action/AddRequest";
@@ -110,11 +111,10 @@ const Tabs = () => {
             <div
               key={e._id}
               className={`flex items-center justify-between
-              ${
-                e._id === currentActive
+              ${e._id === currentActive
                   ? "border-b-2 border-b-blue border-r duration-300"
                   : "border-r"
-              }
+                }
                 w-44 min-w-44 px-1 h-full group cursor-pointer`}
               onClick={() => setCurrentActive(e._id)}
             >
@@ -122,7 +122,7 @@ const Tabs = () => {
                 <p
                   className={`text-xs text-${getDetails(e?.details).color}-600`}
                 >
-                  {getDetails(e?.details).method === "NA" ? (
+                  {getDetails(e?.details).method === "NA" ? e.type === 'folder' ? <BiCollection /> : (
                     <AiOutlineAntDesign className="text-xl text-gray-500" />
                   ) : (
                     <>{getDetails(e?.details).method}</>
@@ -152,7 +152,7 @@ const Tabs = () => {
         <div className="w-[20%] border-l border-b flex justify-center items-center gap-2 relative">
           <select
             className="w-full h-full outline-none text-sm pl-2"
-            //  onChange={(e) => dispatch(OpenEnv(e.target.value))}
+          //  onChange={(e) => dispatch(OpenEnv(e.target.value))}
           >
             <option value="null" className={`w-full text-sm`}>
               No Enviroment
