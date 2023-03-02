@@ -14,14 +14,15 @@ const RightBar = () => {
 
   return (
     <>
-      <div className=" h-[90vh] bg-orange-500  relative">
+      <div className=" h-[90vh] bg-orange-500  relative shadow-md">
         <div className="flex flex-col justify-between items-center w-12 min-w-[48px] bg-white h-full py-1.5">
           <div className="flex flex-col gap-1">
             <motion.div
               whileTap={{ scale: 0.75 }}
               className={`hover:bg-blue-200 w-8 h-8 flex justify-center items-center
-                             cursor-pointer rounded-md  group ${open === true ? "bg-blue-200" : null
-                }`}
+                             cursor-pointer rounded-md  group ${
+                               open === true ? "bg-blue-200" : null
+                             }`}
               onClick={envirmentOpen}
             >
               {/* <ModelBox {...{ set: setOpenn }} /> */}

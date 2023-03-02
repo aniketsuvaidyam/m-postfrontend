@@ -19,7 +19,7 @@ const WorkSpace = () => {
         {tab === "workspace" && (
           <>
             {/* LeftSideUI */}
-            <div className="w-full flex h-[90vh] ">
+            <div className="w-full flex h-[90vh] pt-1 ">
               <Splitter
                 direction={SplitDirection.Horizontal}
                 initialSizes={[27, 73]}
@@ -54,9 +54,7 @@ const WorkSpace = () => {
                   </Splitter>
 
                   <Splitter direction={SplitDirection.Horizontal}>
-                    <div className="pt-0.5">
-                      <NavBody />
-                    </div>
+                    <NavBody />
                   </Splitter>
                 </Splitter>
               </Splitter>
