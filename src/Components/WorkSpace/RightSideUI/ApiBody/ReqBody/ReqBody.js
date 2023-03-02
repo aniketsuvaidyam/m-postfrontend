@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineSave } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
+import { DataContext } from "../../../../Context/DataProvider";
 
 const ReqBody = () => {
+  const { reqData } = useContext(DataContext);
   const [isLoding, setIsLoding] = useState(false);
+  const [data, setData] = useState(reqData.details);
+  console.log(data)
   return (
     <>
       <div className="w-full min-h-[100vh] bg-slate-400">
@@ -13,22 +17,23 @@ const ReqBody = () => {
             <select
               className="bg-white font-medium rounded-l-md text-gray-700  px-4 h-8 focus:outline-none border-none "
               onChange={(e) => {
-                // setData({ ...data, method: e.target.value });
+                setData({ ...data, method: e.target.value });
               }}
             >
-              <option value="GET" >
+              <option value="GET" selected={data.method.toUpperCase() === "GET"}>
                 GET
               </option>
               <option
                 value="POST"
+                selected={data.method.toUpperCase() === "POST"}
               >
                 POST
               </option>
-              <option value="PUT" >
+              <option value="PUT" selected={data.method.toUpperCase() === "PUT"}>
                 PUT
               </option>
               <option
-                value="DELETE"
+                value="DELETE" selected={data.method.toUpperCase() === "DELETE"}
               >
                 DELETE
               </option>
@@ -43,9 +48,9 @@ const ReqBody = () => {
               className="text-xs font-semibold px-2 h-9 w-full border-gray-300 border
              bg-white focus:outline-none"
               onChange={(e) => {
-                // setData({ ...data, url: e.target.value });
+                setData({ ...data, url: e.target.value });
               }}
-            // defaultValue={data?.url || ""}
+              defaultValue={data?.url || ""}
             />
 
           </div>
