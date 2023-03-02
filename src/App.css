@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* resize box coustom css */
+
+.__dbk__gutter.Dark {
+    background: #E5E7EB !important;
+}
+.__dbk__gutter:hover {
+    background:#2B26FF !important;
+}
+.__dbk__gutter.Horizontal {
+
+    padding: 0% !important;
+    
+}
+.__dbk__gutter.Vertical {
+    width: 100%;
+ padding: 0% !important;
+    flex-direction: row;
+}
+.__dbk__dragger.Dark {
+    background: transparent !important;
+}
+.__dbk__gutter.Dark:hover > .__dbk__dragger {
+    background: transparent !important;
+}
+.__dbk__gutter.Vertical:hover {
+    cursor: s-resize !important;
+}
+.__dbk__gutter.Horizontal:hover {
+    cursor:ew-resize !important;
+}
