@@ -44,7 +44,9 @@ const WorkSpace = () => {
                     </Splitter>
                   </Splitter>
                   <Splitter direction={SplitDirection.Horizontal}>
-                    <NavBody />
+                    <div className="pt-0.5">
+                      <NavBody />
+                    </div>
                   </Splitter>
                 </Splitter>
               </Splitter>
