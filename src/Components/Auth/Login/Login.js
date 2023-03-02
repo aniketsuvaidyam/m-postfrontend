@@ -7,6 +7,8 @@ import SOS from "../../../Assets/SOS.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   // email and setEmail is used for storing email information for login pourpose
@@ -29,6 +31,11 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
+        toast.success(res.data.message, {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 1000,
+          theme: "colored",
+        });
         sessionStorage.setItem("token", res.data.token);
         if (res.data.token) {
           setTimeout(() => {
@@ -44,7 +51,11 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.response.data.message, {
+          position: toast.POSITION.BOTTOM_LEFT,
+          autoClose: 1000,
+          theme: "colored",
+        });
       });
   };
   return (
@@ -163,6 +174,7 @@ const Login = () => {
             {/* {openForgetPopUp===true &&  <FrogetPassword {...{setOpenForgetPopUp}}/>} */}
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );
