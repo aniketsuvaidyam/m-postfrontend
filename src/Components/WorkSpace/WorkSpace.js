@@ -22,20 +22,23 @@ const WorkSpace = () => {
               <Splitter
                 direction={SplitDirection.Horizontal}
                 initialSizes={[27, 73]}
+                minWidths={[75]}
               >
                 <LeftSideUI />
                 <Splitter
                   direction={SplitDirection.Horizontal}
-                  initialSizes={[95, 4]}
+                  initialSizes={[95, 5]}
+                  minWidths={[700]}
                 >
                   <Splitter
                     direction={SplitDirection.Vertical}
                     initialSizes={[55, 45]}
                   >
-                    <div className="w-full">
+                    <div>
                       <Tabs />
                       <ReqBody />
                     </div>
+
                     <Splitter direction={SplitDirection.Horizontal}>
                       <ResBody />
                     </Splitter>
