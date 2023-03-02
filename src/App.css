@@ -17,9 +17,9 @@
     
 }
 .__dbk__gutter.Vertical {
-    width: 100%;
+  
  padding: 0% !important;
-    flex-direction: row;
+
 }
 .__dbk__dragger.Dark {
     background: transparent !important;
@@ -28,8 +28,8 @@
     background: transparent !important;
 }
 .__dbk__gutter.Vertical:hover {
-    cursor: s-resize !important;
+    cursor: ns-resize !important;
 }
 .__dbk__gutter.Horizontal:hover {
-    cursor:ew-resize !important;
+    cursor:e-resize !important;
 }
