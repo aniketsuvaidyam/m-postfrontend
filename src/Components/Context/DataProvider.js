@@ -17,6 +17,7 @@ const DataProvider = ({ children }) => {
   const [status, setStatus] = useState('200');
   const [tabsList, setTabsList] = useState([]);
   const [currentActive, setCurrentActive] = useState('');
+  const [reqData, setReqData] = useState([]);
   // const [responseData, setResponseData] = useState([]);
   // const [changeAction, setchangeAction] = useState('');
   const [url, setUrl] = useState('');
@@ -51,6 +52,8 @@ const DataProvider = ({ children }) => {
           setTabsList,
           currentActive,
           setCurrentActive,
+          reqData,
+          setReqData,
           // responseData,
           // setResponseData,
           // SetEnviroment,

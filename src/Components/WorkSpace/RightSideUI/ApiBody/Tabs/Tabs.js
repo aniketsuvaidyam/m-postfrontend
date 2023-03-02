@@ -19,7 +19,7 @@ const Tabs = () => {
     tabsList,
     setTabsList,
     currentActive,
-    setCurrentActive,
+    setCurrentActive, setReqData
   } = useContext(DataContext);
   const [newEnviroment, setNewEnviroment] = useState([]);
   const local_variable = newEnviroment?.filter((e) => e.name !== "Globals");
@@ -111,15 +111,14 @@ const Tabs = () => {
             <div
               key={e._id}
               className={`flex items-center justify-between
-              ${
-                e._id === currentActive
+              ${e._id === currentActive
                   ? "border-b-2 border-b-blue border-r duration-300"
                   : "border-r"
-              }
+                }
                 w-44 min-w-44 px-1 h-full group cursor-pointer`}
               onClick={() => setCurrentActive(e._id)}
             >
-              <div className="flex items-center  w-44 min-w-44 h-full gap-2">
+              <div className="flex items-center  w-44 min-w-44 h-full gap-2" onClick={() => setReqData(e)}>
                 <p
                   className={`text-xs text-${getDetails(e?.details).color}-600`}
                 >
@@ -157,7 +156,7 @@ const Tabs = () => {
         <div className="w-[20%] border-l border-b flex justify-center items-center gap-2 relative">
           <select
             className="w-full h-full outline-none text-sm pl-2"
-            //  onChange={(e) => dispatch(OpenEnv(e.target.value))}
+          //  onChange={(e) => dispatch(OpenEnv(e.target.value))}
           >
             <option value="null" className={`w-full text-sm`}>
               No Enviroment
