@@ -77,7 +77,7 @@ const Header = ({ setTab, tab }) => {
   }
   return (
     <>
-      <div className="w-full h-[10vh] min-h-[62px] shadow-md bg-white z-50">
+      <div className="w-full h-[10vh] min-h-[56px] shadow-md bg-white z-50">
         <div className="w-full h-full  flex justify-between items-center px-4 max-w-[1720px] mx-auto">
           <div className="w-full h-full flex items-center gap-8">
             {/* Logo */}
@@ -87,7 +87,7 @@ const Header = ({ setTab, tab }) => {
           </div>
           <div className="flex gap-5 items-center">
             {/* search */}
-            <div className='cursor-pointer hidden lg:block'><Search /></div>
+            <div className='cursor-pointer hidden lg:block min-w-[200px]'><Search /></div>
             <div className="block lg:hidden">
               <div className='cursor-pointer flex items-center justify-center w-8 h-8 border rounded-full'>
                 <BsSearch />
