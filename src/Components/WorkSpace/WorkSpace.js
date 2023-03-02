@@ -32,7 +32,7 @@ const WorkSpace = () => {
                     direction={SplitDirection.Vertical}
                     initialSizes={[55, 45]}
                   >
-                    <div className="w-full">
+                    <div className="w-full pt-0.5">
                       <Tabs />
                       <ReqBody />
                     </div>
@@ -40,8 +40,11 @@ const WorkSpace = () => {
                       <ResBody />
                     </Splitter>
                   </Splitter>
-                  <Splitter direction={SplitDirection.Horizontal}>
-                    <NavBody />
+                  <Splitter direction={SplitDirection.Horizontal} >
+                    <div className="pt-0.5">
+                      <NavBody />
+                    </div>
+
                   </Splitter>
                 </Splitter>
               </Splitter>
